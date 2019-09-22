@@ -1,0 +1,59 @@
+package devpack;
+
+public class MyClass1 
+{
+	int num;
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public MyClass1(int num) {
+		super();
+		this.num = num;
+	}
+
+	public String toString() {
+		
+		return ""+num;
+	}
+
+	public MyClass1() {
+		super();
+	
+	}
+	
+}
+
+
+
+
+
+
+
+//**********************************cilentapplications
+
+
+
+
+
+package cilentpro;
+
+import devpack.Myclass1;
+
+public class clientapp {
+
+	public static void main(String[] args)
+	{
+		Myclass1 m=new Myclass1();
+		m.setNum(100);
+		System.out.println(m.getNum());
+		
+
+	}
+
+}

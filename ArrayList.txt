@@ -1,0 +1,126 @@
+/* *******************  Question on Arraylist********************
+ * class Employee
+	private int empid
+	private String name,desig
+	private double salary	
+	parameterized constructor
+	toString method
+create 4 objects of Employee
+create an arraylist of Employee and store these 4 objects.
+create an iterator and traverse throught the arraylist
+
+now store this arraylist inside filesytem and also read.
+****************************************************************/
+
+
+
+package practice;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.io.*;
+
+public class Empolyee implements Serializable
+{
+	 private int empid;
+	 private String name,desig;
+	 private double salary;
+	 
+	 Empolyee(int empid,String name,String desig,double salary)
+	 {
+		 this.empid=empid;
+		 this.name=name;
+		 this.desig=desig;
+		 this.salary=salary;
+		 
+	 
+	 }
+
+	
+	
+	public String toString() 
+               {
+		return "Empolyee [empid=" + empid + ", name=" + name + ", desig=" + desig + ", salary=" + salary + "]";
+	       }
+
+
+
+
+	public static void main(String args[])
+	{
+		Empolyee e=new Empolyee(1,"virat","Cap",1000000);
+		Empolyee e1=new Empolyee(2,"rohit","vc",500000);
+		Empolyee e2=new Empolyee(3,"Shikhar","1st op",300000);
+		Empolyee e3=new Empolyee(4,"Rahul","2nd op",200000);
+		
+		
+		
+		
+		
+		
+		List l=new ArrayList();
+		
+		
+		l.add(e);
+		l.add(e1);
+		l.add(e2);
+		l.add(e3);
+		
+		
+		Iterator itr=l.iterator();
+		while(itr.hasNext())
+		{
+			System.out.println(itr.next());
+		}
+		
+		
+		 
+		 try {
+			  FileOutputStream fos=new FileOutputStream("D://Cri");
+		      ObjectOutputStream oos=new ObjectOutputStream(fos);
+		     oos.writeObject(l);
+          	     
+		
+		} catch (FileNotFoundException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		} catch (IOException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		}
+ 		 
+				 
+		 try {
+				FileInputStream fis=new FileInputStream("D://Cri");
+			     ObjectInputStream ois=new ObjectInputStream(fis);
+			     
+			     
+			     List l1=(ArrayList)ois.readObject();
+		
+			     
+			     Iterator itr1=l1.iterator();
+				 while(itr1.hasNext())
+				 {
+					 System.out.println(itr1.next());
+				 }
+			     
+			
+			} catch (FileNotFoundException e4) {
+				// TODO Auto-generated catch block
+				e4.printStackTrace();
+			} catch (IOException e4) {
+				// TODO Auto-generated catch block
+				e4.printStackTrace();
+			} catch (ClassNotFoundException e4) {
+				// TODO Auto-generated catch block
+				e4.printStackTrace();
+			}
+		 
+		 
+		
+		
+		
+	}
+	 
+	 
